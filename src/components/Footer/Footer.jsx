@@ -25,4 +25,5 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer; 
+// exportation du footer

@@ -18,7 +18,9 @@ exports.signup = (req, res, next) => {
       // Sauvegarde le nouvel utilisateur dans la base de données
       user
         .save()
-        .then(() => res.status(201).json({ message: "Utilisateur créé !" })) // Succès : utilisateur créé
+        .then(() =>
+          res.status(201).json({ message: "Utilisateur a été créé !" })
+        ) // Succès : utilisateur créé
         .catch((error) => res.status(400).json({ error })); // Erreur : problème de sauvegarde
     })
     .catch((error) => res.status(500).json({ error })); // Erreur serveur en cas d'échec du hachage
@@ -33,7 +35,7 @@ exports.login = (req, res, next) => {
         // Si aucun utilisateur n'est trouvé
         res
           .status(401)
-          .json({ message: "Identifiant/mot de passe incorrect !" }); // Erreur d'authentification
+          .json({ message: "Identifiant ou mot de passe incorrect !" }); // Erreur d'authentification
       } else {
         // Compare le mot de passe fourni avec le mot de passe haché stocké
         bcrypt
@@ -43,7 +45,7 @@ exports.login = (req, res, next) => {
               // Si le mot de passe est incorrect
               res
                 .status(401)
-                .json({ message: "Identifiant/mot de passe incorrect !" }); // Erreur d'authentification
+                .json({ message: "Identifiant ou mot de passe incorrect !" }); // Erreur d'authentification
             } else {
               // Génère un token JWT contenant l'ID de l'utilisateur
               res.status(200).json({
