@@ -2,7 +2,7 @@ const { error } = require("console");
 const Book = require("../models/Book");
 const fs = require("fs");
 
-// Fonction pour créer un nouveau livre
+// Fonction pour créer un livre nouveau
 exports.createBook = (req, res, next) => {
   const bookObject = JSON.parse(req.body.book); // Parse les données du livre envoyées dans la requête
   delete bookObject._id; // Supprime le champ '_id' pour éviter les conflits
