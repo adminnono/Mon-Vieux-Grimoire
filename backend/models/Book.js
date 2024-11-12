@@ -1,4 +1,4 @@
-const mongoose = require("mongoose"); // Importe mongoose pour interagir avec MongoDB
+const mongoose = require("mongoose");
 
 // Définition du schéma de notation (ratingSchema) pour les notes attribuées aux livres
 const ratingSchema = new mongoose.Schema({
