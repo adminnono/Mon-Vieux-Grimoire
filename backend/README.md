@@ -18,7 +18,17 @@ Assurez-vous d'installer les dépendances suivantes :
 
 ### 2. Démarrage du Projet
 
-Après avoir installé tous les packages, naviguez vers le dossier **backend** et exécutez la commande suivante pour démarrer le projet :
+Après avoir installé tous les packages, naviguez vers le dossier **Backend** et exécutez les commandes suivantes pour démarrer le projet :
 
+- **cd Backend**
 - **npm run dev**
 - **node server.js**
+
+Après avoir effectué ces commandes, votre Backend devrait écouter sur le port 3000 et être connecté à MongoDB !
+
+Après dans un autre terminal Bash, lancer le Frontend et se mettre sur le port 3001 :
+
+- **cd Frontend**
+- **npm start**
+
+Bravo ! Vous avez réussi à lancer le projet !
