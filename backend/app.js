@@ -5,13 +5,26 @@ const path = require("path");
 
 const bookRoute = require("./routes/book");
 const userRoute = require("./routes/user");
-
+const dotenv = require("dotenv");
 const app = express();
+// Change les variables d'environnement
+// Charger les variables d'environnement des fichiers `.env` et `.env.local`
+dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env.local" });
 
+const MONGODB_URI_TEMPLATE = process.env.MONGODB_URI_TEMPLATE;
+const MONGODB_USER = process.env.MONGODB_USER;
+const MONGODB_PASS = process.env.MONGODB_PASS;
+
+const MONGODB_URI = MONGODB_URI_TEMPLATE.replace(
+  "{USER}",
+  MONGODB_USER
+).replace("{PASSWORD}", MONGODB_PASS);
 // Connexion à MongoDB via mongoose avec l'URI de connexion
+
 mongoose
   .connect(
-    "mongodb+srv://arnaudduj:yNLfMGF9PT4vHKrm@cluster0.fjpq2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    MONGODB_URI,
     { useNewUrlParser: true, useUnifiedTopology: true } // Options pour une connexion plus stable
   )
   .then(() => console.log("Connexion à MongoDB réussi !")) // Confirme la réussite de la connexion
